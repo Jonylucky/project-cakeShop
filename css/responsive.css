@@ -49,8 +49,8 @@
     }
     .box-siderbar{
         width: 100%;
-        z-index: 2;
-        position: absolute;
+        
+      
         font-size: 2rem;
         padding: 0;
         background-color:#b84105;
@@ -62,8 +62,8 @@
     }
     /* nav sidebar */
 .nav-sidebar{
-    width: 100%;
-        z-index: 1;
+   width: 100%;
+ z-index: 1;
         position: fixed;
           font-size: 2rem;
           padding: 0;
@@ -85,15 +85,7 @@
     }
     .container-sidebar {
         width:70%;
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        bottom:0;
-        z-index: 10000;
-       
-     
-       
+        height: 168vh;
     }
     .box-map {
        
