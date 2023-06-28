@@ -4,12 +4,7 @@
     --brown: #833517;
 }
 
-body {
-    background: #B43F11;
-    width: 100%;
-   
 
-}
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -21,6 +16,13 @@ body {
     text-transform: capitalize;
     text-decoration: none;
     transition: .2s linear;
+    max-width: 1600px;
+}
+body {
+    background: #B43F11;
+    width: 100%;
+   
+
 }
 
 .btn {
@@ -184,5 +186,6 @@ output {
 .view-all:hover {
     color: #fff;
 }
+
 
 

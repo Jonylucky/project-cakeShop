@@ -35,7 +35,7 @@ myApp.run(function ($rootScope, $http) {
 
   $http({
     method: 'GET',
-    url: '/api/data'
+    url: './data/data.json'
   }).then(function successCallback(response) {
     // Xử lý phản hồi thành công từ server
     $rootScope.data = response.data.details;
@@ -57,6 +57,23 @@ myApp.factory("myService", function () {
   function get() {
     return savedData;
   }
+  myApp.config(['$provide', function($provide) {
+    $provide.decorator('$templateRequest', ['$delegate', function($delegate) {
+  
+      var fn = $delegate;
+  
+      $delegate = function(tpl) {
+  
+        for (var key in fn) {
+          $delegate[key] = fn[key];
+        }
+  
+        return fn.apply(this, [tpl, true]);
+      };
+  
+      return $delegate;
+    }]);
+  }]);
   // save type product
   function setTypeProduct(type) {
     saveType = type;
@@ -102,10 +119,21 @@ myApp.controller("homeCtrl", function ($scope, myService) {
 myApp.controller("shopCtrl", function ($scope, $http, myService) {
   // get type from myservice
   $scope.typeProduct = myService.getTypeproduct();
-
-  // get data from filr json
-  $http.get("./data/data.json").then(async function (response) {
   $scope.filter = "";
+  // get data from filr json
+  $http({
+    method: 'GET',
+    url: '../project-cakeShop/data/data.json'
+  }).then(function successCallback(response) {
+    // Xử lý phản hồi thành công từ server
+     $scope.listProduct = response.data.details;
+  
+  }, function errorCallback(response) {
+    // Xử lý phản hồi thất bại từ server
+    console.log('Lỗi khi lấy dữ liệu:');
+  });
+  
+ 
 
     
 
@@ -114,10 +142,10 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
     ($scope.currentPage = 1),
      ($scope.pageSize = 12)
 
-    $scope.listProduct = response.data.details;
+   
  
-    // hiden filter detail fromt product
-    $(".fill-detail__list").hide("");
+    
+ 
     // get type from myservice
 
     $scope.filter = $scope.typeProduct;
@@ -133,7 +161,7 @@ console.log( $scope.filter)
     //
 
 
-  });
+  
 
   // save item data  myservice
   $scope.saveData = function (item) {

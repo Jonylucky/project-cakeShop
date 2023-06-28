@@ -1,6 +1,9 @@
 <div ng-controller="homeCtrl">
     <!-- body -->
     <!-- carousel -->
+
+
+
     <div class="carousel">
 
         <div class="container">
@@ -56,8 +59,8 @@
             </div>
 
         </div>
-        <div id="next-slide" class="fas fa-angle-right" ng-click="next()"></div>
-        <div id="prev-slide" class="fas fa-angle-left" ng-click="prev()"></div>
+        <!-- <div id="next-slide" class="fas fa-angle-right" ng-click="next()"></div>
+        <div id="prev-slide" class="fas fa-angle-left" ng-click="prev()"></div> -->
 
     </div>
     <!-- banner -->
@@ -103,23 +106,23 @@
                 <a class="view-all" ng-click="saveType()">View All >></a>
             </div>
             <div class="category-content">
-                <div class="box-category wd-five">
+                <div class="box-category wd-five col-thir">
                     <img src="./images/cat-1.jpg" alt="">
                     <h3>Fresh Cupcake</h3>
                 </div>
-                <div class="box-category wd-five">
+                <div class="box-category wd-five col-thir">
                     <img src="./images/cat-2.jpg" alt="">
                     <h3>Fresh Cupcake</h3>
                 </div>
-                <div class="box-category wd-five">
+                <div class="box-category wd-five col-thir">
                     <img src="./images/cat-3.jpg" alt="">
                     <h3>Fresh Cupcake</h3>
                 </div>
-                <div class="box-category wd-five">
+                <div class="box-category wd-five col-thir">
                     <img src="./images/cat-4.jpg" alt="">
                     <h3>Fresh Cupcake</h3>
                 </div>
-                <div class="box-category wd-five">
+                <div class="box-category wd-five col-thir">
                     <img src="./images/cat-5.jpg" alt="">
                     <h3 class="box-head">Fresh Cupcake</h3>
                 </div>
@@ -135,7 +138,7 @@
                 <a class="view-all" href="#!shop">View All >></a>
             </div>
             <div class="product-content">
-                <div class=" box-product wd-for" ng-repeat=" item in data | filter:{'type':'Anniversary'} ">
+                <div class=" box-product wd-for col-thir" ng-repeat=" item in data | filter:{'type':'Anniversary'} ">
                     <div class=" product-icon">
                         <div class="box-icon">
                             <a href="" class="icon-link"> <i class="fa-solid fa-heart "></i></a>
@@ -184,11 +187,11 @@
             <div class="about-conten wd-haft">
                 <span>welcome to our products</span>
                 <h3>Cake-A-Licious products</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                <p class="text-about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore farhan aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
                     in voluptate </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                <p class="text-about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     farhan aliqua. Ut enim ad minim veniam, quis</p>
                 <a href="#" class="btn">read more</a>
             </div>
