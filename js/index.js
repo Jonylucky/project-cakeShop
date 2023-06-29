@@ -89,6 +89,19 @@ myApp.factory("myService", function () {
     getTypeproduct: getTypeproduct,
   };
 });
+// nav constroller
+myApp.controller("navCtrl",function($scope){
+  $scope.showNavbar = function(){
+    $(".nav").hide();
+    $(".nav-sidebar").show();
+
+  }
+  $scope.hidenNavbar = function(){
+    $(".nav").show();
+    $(".nav-sidebar").hide();
+
+  }
+})
 // home controller
 myApp.controller("homeCtrl", function ($scope, myService) {
   let fade = document.querySelectorAll(".fade");

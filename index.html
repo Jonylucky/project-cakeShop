@@ -34,144 +34,158 @@
 
 <body ng-app="myApp">
     <!-- header nav -->
-    <header class="header">
-        <div class="container">
+    <div ng-controller="navCtrl">
 
-            <nav class="nav">
-                <div class="nav-log">
-                    <i class="fa-solid fa-basket-shopping mg-t12"></i>
-                    <h1 class="head-log"> Cake</h1>
-                </div>
+        <header class="header">
+            <div class="container">
 
-                <div class="nav-body">
+                <nav class="nav">
+                    <div class="nav-btn l-hiden" ng-click="showNavbar()">
+                        <i class="fa-solid fa-bars"></i>
 
-                    <ul class="nav-list">
-                        <li class="nav-item"><a href="#!" class="nav-link">Home</a></li>
-
-                        <li class="nav-item"><a href="#!shop" class="nav-link">Shop</a></li>
-
-                        <li class="nav-item"><a href="
-                            #!about" class="nav-link">About</a></li>
-
-                        <li class="nav-item"><a href="" class="nav-link">Review</a></li>
-
-                        <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
-
-                        <li class="nav-item"><a href="#!contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="nav-info">
-                    <ul class="info-list">
-                        <li class="info-item"><a href="" class="info-link"><i
-                                    class="fa-solid fa-magnifying-glass"></i></a>
-                        </li>
-                        <li class="info-item"><a href="" class="info-link"><i class="fa-solid fa-cart-shopping"></i></a>
-                        </li>
-                        <li class="info-item"><a href="" class="info-link"><i class="fa-solid fa-user"></i></a></li>
-
-                    </ul>
-                </div>
-            </nav>
-
-        </div>
-    </header>
-    <nav class="nav-sidebar l-hiden s-show">
-        <div class=" box-siderbar">
-
-            <div class="container-sidebar">
-
-                <div class="search">
-                    <div class="box-map">
-                        <iframe class="map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15677.277428229037!2d106.64782024265908!3d10.786834253624187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed2392c44df%3A0xd2ecb62e0d050fe9!2sFPT-Aptech%20Computer%20Education%20HCM!5e0!3m2!1sen!2sin!4v1687748371132!5m2!1sen!2sin"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <ul class="list-search">
-                        <li class="product-item__type item-search">
-                            <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-solid fa-house icon-active"></i>Home</a>
-                        </li>
-                        <li class="product-item__type item-search product-item__shop ">
-                            <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-solid fa-shop icon-active"></i>Shop</a>
-                            <ol class="nav-list__product">
+                    <div class="nav-log">
+                        <i class="fa-solid fa-basket-shopping mg-t12"></i>
+                        <h1 class="head-log"> Cake</h1>
+                    </div>
 
-                                <li class="item-search"><span class="span-title"> Price product</span>
-                                    <input type="range" min="0" max="100" oninput="rangevalue.value=value +'$'" />
-                                    <output id="rangevalue">50$</output>
-                                </li>
-                                <li class="item-search ">
-                                    <span class="span-title">Type product</span>
-                                    <ul class="product-list__type">
-                                        <li class="product-item__type">
-                                            <a class="product-link__type" data-set="birthday" ng-model="type"
-                                                ng-click="getType('birthday')" value="birthday">Birthday</a>
-                                        </li>
-                                        <li class="product-item__type"><a class="product-link__type" data-set="Marriage"
-                                                ng-click="getType('Marriage')" ng-model="type">Marriagey</a>
-                                        </li>
-                                        <li class="product-item__type"><a class="product-link__type"
-                                                data-set="Anniversary" ng-click="getType('Anniversary')"
-                                                ng-model="type">Anniversary</a>
-                                        </li>
-                                        <li class="product-item__type"><a class="product-link__type" data-set="gallsery"
-                                                ng-click="getType('gallsery')" ng-model="type">Gallsery</a>
-                                        </li>
+                    <div class="nav-body s-hiden">
 
-                                    </ul>
-                                </li>
-                                <li class="item-search">
-                                    <span class="span-title">Name product</span>
-                                    <input type="text" placeholder="search name product" ng-model="name"
-                                        class="search-name">
-                                </li>
-                                <li class=" item-search">
-                                    <span class="span-title">Egg</span>
-                                    <ul class="product-list__type">
-                                        <li class="product-item__type"><a href="" class="product-link__type"
-                                                ng-model="egg" ng-click="orderfilEgg('with Egg')"
-                                                data-set="with Egg">With Egg</a>
-                                        </li>
-                                        <li class="product-item__type"><a href="" class="product-link__type"
-                                                ng-model="egg" ng-click="orderfilEgg('no')" data-set="no">Have Egg </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </li>
-                        <li class="product-item__type item-search">
-                            <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-solid fa-address-card icon-active"></i>About</a>
-                        </li>
-                        <li class="product-item__type item-search">
-                            <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-sharp fa-solid fa-magnifying-glass-dollar icon-active"></i>Review</a>
-                        </li>
-                        <li class="product-item__type item-search">
-                            <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-solid fa-blog icon-active"></i>Blog</a>
-                        </li>
-                        <li class="product-item__type item-search">
-                            <a class="product-link__type " data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-solid fa-address-book icon-active"></i>Contact</a>
-                        </li>
-                        <li class="product-item__type item-search">
-                            <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-solid fa-user icon-active icon-active"></i>Account</a>
-                        </li>
-                        <li class="product-item__type item-search">
-                            <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
-                                    class="fa-solid fa-cart-shopping icon-active"></i>Cart</a>
-                        </li>
+                        <ul class="nav-list">
+                            <li class="nav-item"><a href="#!" class="nav-link">Home</a></li>
 
+                            <li class="nav-item"><a href="#!shop" class="nav-link">Shop</a></li>
 
-                    </ul>
-                </div>
+                            <li class="nav-item"><a href="
+                                #!about" class="nav-link">About</a></li>
+
+                            <li class="nav-item"><a href="" class="nav-link">Review</a></li>
+
+                            <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
+
+                            <li class="nav-item"><a href="#!contact" class="nav-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-info s-hiden">
+                        <ul class="info-list">
+                            <li class="info-item"><a href="" class="info-link"><i
+                                        class="fa-solid fa-magnifying-glass"></i></a>
+                            </li>
+                            <li class="info-item"><a href="" class="info-link"><i
+                                        class="fa-solid fa-cart-shopping"></i></a>
+                            </li>
+                            <li class="info-item"><a href="" class="info-link"><i class="fa-solid fa-user"></i></a></li>
+
+                        </ul>
+                    </div>
+                </nav>
 
             </div>
-        </div>
-        <div></div>
-    </nav>
+        </header>
+        <nav class="nav-sidebar l-hiden">
+
+            <div class=" box-siderbar">
+                <div class="container-sidebar">
+
+                    <div class="search">
+                        <div class="box-map">
+                            <iframe class="map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15677.277428229037!2d106.64782024265908!3d10.786834253624187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed2392c44df%3A0xd2ecb62e0d050fe9!2sFPT-Aptech%20Computer%20Education%20HCM!5e0!3m2!1sen!2sin!4v1687748371132!5m2!1sen!2sin"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <ul class="list-search">
+                            <li class="product-item__type item-search">
+                                <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-solid fa-house icon-active"></i>Home</a>
+                            </li>
+                            <li class="product-item__type item-search product-item__shop ">
+                                <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-solid fa-shop icon-active"></i>Shop</a>
+                                <ol class="nav-list__product">
+
+                                    <li class="item-search"><span class="span-title"> Price product</span>
+                                        <input type="range" min="0" max="100" oninput="rangevalue.value=value +'$'" />
+                                        <output id="rangevalue">50$</output>
+                                    </li>
+                                    <li class="item-search ">
+                                        <span class="span-title">Type product</span>
+                                        <ul class="product-list__type">
+                                            <li class="product-item__type">
+                                                <a class="product-link__type" data-set="birthday" ng-model="type"
+                                                    ng-click="getType('birthday')" value="birthday">Birthday</a>
+                                            </li>
+                                            <li class="product-item__type"><a class="product-link__type"
+                                                    data-set="Marriage" ng-click="getType('Marriage')"
+                                                    ng-model="type">Marriagey</a>
+                                            </li>
+                                            <li class="product-item__type"><a class="product-link__type"
+                                                    data-set="Anniversary" ng-click="getType('Anniversary')"
+                                                    ng-model="type">Anniversary</a>
+                                            </li>
+                                            <li class="product-item__type"><a class="product-link__type"
+                                                    data-set="gallsery" ng-click="getType('gallsery')"
+                                                    ng-model="type">Gallsery</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="item-search">
+                                        <span class="span-title">Name product</span>
+                                        <input type="text" placeholder="search name product" ng-model="name"
+                                            class="search-name">
+                                    </li>
+                                    <li class=" item-search">
+                                        <span class="span-title">Egg</span>
+                                        <ul class="product-list__type">
+                                            <li class="product-item__type"><a href="" class="product-link__type"
+                                                    ng-model="egg" ng-click="orderfilEgg('with Egg')"
+                                                    data-set="with Egg">With Egg</a>
+                                            </li>
+                                            <li class="product-item__type"><a href="" class="product-link__type"
+                                                    ng-model="egg" ng-click="orderfilEgg('no')" data-set="no">Have Egg
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li class="product-item__type item-search">
+                                <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-solid fa-address-card icon-active"></i>About</a>
+                            </li>
+                            <li class="product-item__type item-search">
+                                <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-sharp fa-solid fa-magnifying-glass-dollar icon-active"></i>Review</a>
+                            </li>
+                            <li class="product-item__type item-search">
+                                <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-solid fa-blog icon-active"></i>Blog</a>
+                            </li>
+                            <li class="product-item__type item-search">
+                                <a class="product-link__type " data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-solid fa-address-book icon-active"></i>Contact</a>
+                            </li>
+                            <li class="product-item__type item-search">
+                                <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-solid fa-user icon-active icon-active"></i>Account</a>
+                            </li>
+                            <li class="product-item__type item-search">
+                                <a class="product-link__type" data-set="all" ng-model="type" ng-click=""><i
+                                        class="fa-solid fa-cart-shopping icon-active"></i>Cart</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="nav-btn__close" ng-click="hidenNavbar()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+        </nav>
+    </div>
 
 
     <div ng-view>
