@@ -42,8 +42,17 @@
   color: #222;
 }
 .nav-btn{
-  font-size: 4rem;
-  padding: 0 16px;
+  margin: 6px;
+  color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 0.5rem 1rem;
+  background-color: var(--brown);
+  /* height: 8rem; */
+  width: 7rem;
+  font-size: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
 }
 /* nav slide */
 
@@ -248,7 +257,7 @@
   
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
   flex-wrap: wrap;
 }
 .product-content {
