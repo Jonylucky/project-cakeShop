@@ -21,6 +21,7 @@
 body {
     background: #B43F11;
     width: 100%;
+    height: 100vh;
    
 
 }
@@ -121,6 +122,9 @@ output {
 }
 
 .mg-t-b {
+    margin: 8px 0;
+}
+.mg-small{
     margin: 8px 0;
 }
 
