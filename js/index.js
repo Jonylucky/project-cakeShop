@@ -44,7 +44,7 @@ myApp.run(function ($rootScope, $http) {
     // Xử lý phản hồi thất bại từ server
     console.log('Lỗi khi lấy dữ liệu:');
   });
-  
+
 });
 // factory
 myApp.factory("myService", function () {
@@ -57,20 +57,20 @@ myApp.factory("myService", function () {
   function get() {
     return savedData;
   }
-  myApp.config(['$provide', function($provide) {
-    $provide.decorator('$templateRequest', ['$delegate', function($delegate) {
-  
+  myApp.config(['$provide', function ($provide) {
+    $provide.decorator('$templateRequest', ['$delegate', function ($delegate) {
+
       var fn = $delegate;
-  
-      $delegate = function(tpl) {
-  
+
+      $delegate = function (tpl) {
+
         for (var key in fn) {
           $delegate[key] = fn[key];
         }
-  
+
         return fn.apply(this, [tpl, true]);
       };
-  
+
       return $delegate;
     }]);
   }]);
@@ -90,13 +90,13 @@ myApp.factory("myService", function () {
   };
 });
 // nav constroller
-myApp.controller("navCtrl",function($scope){
-  $scope.showNavbar = function(){
+myApp.controller("navCtrl", function ($scope) {
+  $scope.showNavbar = function () {
     $(".nav").hide();
     $(".nav-sidebar").show();
 
   }
-  $scope.hidenNavbar = function(){
+  $scope.hidenNavbar = function () {
     $(".nav").show();
     $(".nav-sidebar").hide();
 
@@ -130,11 +130,6 @@ myApp.controller("homeCtrl", function ($scope, myService) {
 });
 // shop controller
 myApp.controller("shopCtrl", function ($scope, $http, myService) {
-<<<<<<< HEAD
-
-
-=======
->>>>>>> c177fa9dc09596c35b5e5a5dd46095b06dea4ae2
   // get type from myservice
   $scope.typeProduct = myService.getTypeproduct();
   $scope.filter = "";
@@ -144,67 +139,60 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
     url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
   }).then(function successCallback(response) {
     // Xử lý phản hồi thành công từ server
-     $scope.listProduct = response.data.details;
-  
+    $scope.listProduct = response.data.details;
+
   }, function errorCallback(response) {
     // Xử lý phản hồi thất bại từ server
     console.log('Lỗi khi lấy dữ liệu:');
   });
-  
- 
 
-    
 
-    // varible nagination page
-<<<<<<< HEAD
-    ($scope.currentPage = 1), ($scope.numPerPage = 12), ($scope.maxSize = 5);
-    var listItem = [];
 
-    listItem = response.data.details;
-    console.log(listItem);
-    // get type from myservice
-    var name = angular.element($(".product-item__type"));
-    name.on("click", function (event) {
-      console.log(event.target)
-      let orderFill = event.target.getAttribute("data-set");
-      orderFilter(orderFill);
 
-    });
 
-    // funsction orderUserFill
-    function orderFilter(orderfil) {
-      console.log(orderfil)
-      $scope.listProduct = listItem.filter((item) =>
-        item.type.includes(orderfil)
-      );
-    }
-    orderFilter()
-=======
-    ( $scope.listProduct = []);
-    ($scope.currentPage = 1),
-     ($scope.pageSize = 12)
+  // varible nagination page
 
-   
- 
-    
- 
-    // get type from myservice
+  ($scope.currentPage = 1), ($scope.numPerPage = 12), ($scope.maxSize = 5);
+  var listItem = [];
 
-    $scope.filter = $scope.typeProduct;
-console.log( $scope.filter)
-    $scope.getType = function(typeProduct){
+  listItem = response.data.details;
+  console.log(listItem);
+  // get type from myservice
+  var name = angular.element($(".product-item__type"));
+  name.on("click", function (event) {
+    console.log(event.target)
+    let orderFill = event.target.getAttribute("data-set");
+    orderFilter(orderFill);
+
+  });
+
+  // funsction orderUserFill
+  function orderFilter(orderfil) {
+    console.log(orderfil)
+    $scope.listProduct = listItem.filter((item) =>
+      item.type.includes(orderfil)
+    );
+  }
+  orderFilter()
+    ($scope.listProduct = []);
+  ($scope.currentPage = 1),
+    ($scope.pageSize = 12)
+
+
+
+
+
+  // get type from myservice
+
+  $scope.filter = $scope.typeProduct;
+  console.log($scope.filter)
+  $scope.getType = function (typeProduct) {
     console.log(typeProduct);
-      $scope.type = typeProduct
-   }
-   $scope.orderfilEgg = function(egg){
+    $scope.type = typeProduct
+  }
+  $scope.orderfilEgg = function (egg) {
     $scope.egg = egg
-   }
-
->>>>>>> c177fa9dc09596c35b5e5a5dd46095b06dea4ae2
-    //
-
-
-  
+  }
 
   // save item data  myservice
   $scope.saveData = function (item) {
@@ -353,12 +341,3 @@ myApp.controller("aboutCtrl", function ($scope) {
     showtask3.classList.remove("show-btn");
   };
 });
-
-
-
-
-=======
-myApp.controller("aboutCtrl",function($scope){
-
-})
->>>>>>> c177fa9dc09596c35b5e5a5dd46095b06dea4ae2
