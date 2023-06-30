@@ -90,7 +90,7 @@ myApp.controller("homeCtrl", function ($scope, myService) {
 });
 // shop controller
 myApp.controller("shopCtrl", function ($scope, $http, myService) {
-  
+
 
   // get type from myservice
   $scope.typeProduct = myService.getTypeproduct();
@@ -102,7 +102,7 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
     // varible nagination page
     ($scope.currentPage = 1), ($scope.numPerPage = 12), ($scope.maxSize = 5);
     var listItem = [];
-   
+
     listItem = response.data.details;
     console.log(listItem);
     // get type from myservice
@@ -111,12 +111,12 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
       console.log(event.target)
       let orderFill = event.target.getAttribute("data-set");
       orderFilter(orderFill);
-    
+
     });
 
     // funsction orderUserFill
     function orderFilter(orderfil) {
-  console.log(orderfil)
+      console.log(orderfil)
       $scope.listProduct = listItem.filter((item) =>
         item.type.includes(orderfil)
       );
@@ -208,7 +208,7 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
 });
 
 // contact controller
-myApp.controller("contactCtrl", function ($scope) {});
+myApp.controller("contactCtrl", function ($scope) { });
 // detail controller
 myApp.controller("detailCtrl", function ($scope, myService) {
   // get  data from myservice
@@ -216,7 +216,7 @@ myApp.controller("detailCtrl", function ($scope, myService) {
 
   $scope.data.image == null
     ? ($scope.data.image =
-        "../images/Cute_girl_bakery_logo_homemade_bakery_shop_hand_drawn_cartoon_art_illustration.jpg")
+      "../images/Cute_girl_bakery_logo_homemade_bakery_shop_hand_drawn_cartoon_art_illustration.jpg")
     : null;
 
   // get by class tag
@@ -242,7 +242,7 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     btnUp.classList.remove("show-btn");
   };
   // zoom img product
-  
+
 
   let magnifying_area = document.getElementById("magnifying_area");
   let magnifying_img = document.getElementById("magnifying_img");
@@ -263,3 +263,75 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     magnifying_img.style.transform = "translate(-50%,-50%) scale(1)";
   });
 });
+
+
+
+// //about (bien cua danh)
+myApp.controller("aboutCtrl", function ($scope) {
+  // get by class tag
+  let btnDown1 = document.querySelector("#btn-down1");
+  let btnDown2 = document.querySelector("#btn-down2");
+  let btnDown3 = document.querySelector("#btn-down3");
+
+  let btnUp1 = document.querySelector("#btn-up1");
+  let btnUp2 = document.querySelector("#btn-up2");
+  let btnUp3 = document.querySelector("#btn-up3");
+
+  let showtask2 = document.querySelector("#task2");
+  let showtask3 = document.querySelector("#task3");
+  let showtask1 = document.querySelector("#task1");
+  // show hiden content  body Product
+  $scope.showContent1 = function () {
+    btnDown1.classList.add("hiden-btn");
+
+    btnUp1.classList.remove("hiden-btn");
+    showtask1.classList.add("show-btn");
+
+  };
+  $scope.hidenContent1 = function () {
+    btnDown1.classList.add("show-btn");
+    btnDown1.classList.remove("hiden-btn");
+
+    btnUp1.classList.add("hiden-btn");
+    btnUp1.classList.remove("show-btn");
+    showtask1.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent2 = function () {
+    btnDown2.classList.add("hiden-btn");
+
+    btnUp2.classList.remove("hiden-btn");
+    btnUp2.classList.add("show-btn");
+    showtask2.classList.add("show-btn");
+  };
+  $scope.hidenContent2 = function () {
+    btnDown2.classList.add("show-btn");
+    btnDown2.classList.remove("hiden-btn");
+
+    btnUp2.classList.add("hiden-btn");
+    btnUp2.classList.remove("show-btn");
+    showtask2.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent3 = function () {
+    btnDown3.classList.add("hiden-btn");
+
+    btnUp3.classList.remove("hiden-btn");
+    btnUp3.classList.add("show-btn");
+    showtask3.classList.add("show-btn");
+  };
+  $scope.hidenContent3 = function () {
+    btnDown3.classList.add("show-btn");
+    btnDown3.classList.remove("hiden-btn");
+
+    btnUp3.classList.add("hiden-btn");
+    btnUp3.classList.remove("show-btn");
+    showtask3.classList.remove("show-btn");
+  };
+});
+
+
+
+
