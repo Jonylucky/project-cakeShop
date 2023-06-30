@@ -264,7 +264,7 @@ myApp.controller("detailCtrl", function ($scope, myService) {
   });
 });
 
-
+a
 
 // //about (bien cua danh)
 myApp.controller("aboutCtrl", function ($scope) {
