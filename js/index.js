@@ -35,6 +35,10 @@ myApp.run(function ($rootScope, $http) {
   $http.get("./data/data.json").then(function (response) {
     $rootScope.dataProduct = response.data.details;
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> e52e5a5a3e712369c64e997a3c487dbbbfdc5e8c
 });
 // factory
 myApp.factory("myService", function () {
@@ -47,6 +51,7 @@ myApp.factory("myService", function () {
   function get() {
     return savedData;
   }
+<<<<<<< HEAD
   myApp.config([
     "$provide",
     function ($provide) {
@@ -68,6 +73,25 @@ myApp.factory("myService", function () {
       ]);
     },
   ]);
+=======
+  myApp.config(['$provide', function ($provide) {
+    $provide.decorator('$templateRequest', ['$delegate', function ($delegate) {
+
+      var fn = $delegate;
+
+      $delegate = function (tpl) {
+
+        for (var key in fn) {
+          $delegate[key] = fn[key];
+        }
+
+        return fn.apply(this, [tpl, true]);
+      };
+
+      return $delegate;
+    }]);
+  }]);
+>>>>>>> e52e5a5a3e712369c64e997a3c487dbbbfdc5e8c
   // save type product
   function setTypeProduct(type) {
     saveType = type;
@@ -88,7 +112,12 @@ myApp.controller("navCtrl", function ($scope) {
   $scope.showNavbar = function () {
     $(".nav").hide();
     $(".nav-sidebar").show();
+<<<<<<< HEAD
   };
+=======
+
+  }
+>>>>>>> e52e5a5a3e712369c64e997a3c487dbbbfdc5e8c
   $scope.hidenNavbar = function () {
     $(".nav").show();
     $(".nav-sidebar").hide();
@@ -124,6 +153,7 @@ myApp.controller("homeCtrl", function ($scope, myService) {
 myApp.controller("shopCtrl", function ($scope, $http, myService) {
   // get type from myservice
   $scope.typeProduct = myService.getTypeproduct();
+<<<<<<< HEAD
 
   // varible nagination page
   $scope.listProduct = [];
@@ -142,6 +172,69 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
   };
 
   //
+=======
+  $scope.filter = "";
+  // get data from filr json
+  $http({
+    method: 'GET',
+    url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
+  }).then(function successCallback(response) {
+    // Xử lý phản hồi thành công từ server
+    $scope.listProduct = response.data.details;
+
+  }, function errorCallback(response) {
+    // Xử lý phản hồi thất bại từ server
+    console.log('Lỗi khi lấy dữ liệu:');
+  });
+
+
+
+
+
+  // varible nagination page
+
+  ($scope.currentPage = 1), ($scope.numPerPage = 12), ($scope.maxSize = 5);
+  var listItem = [];
+
+  listItem = response.data.details;
+  console.log(listItem);
+  // get type from myservice
+  var name = angular.element($(".product-item__type"));
+  name.on("click", function (event) {
+    console.log(event.target)
+    let orderFill = event.target.getAttribute("data-set");
+    orderFilter(orderFill);
+
+  });
+
+  // funsction orderUserFill
+  function orderFilter(orderfil) {
+    console.log(orderfil)
+    $scope.listProduct = listItem.filter((item) =>
+      item.type.includes(orderfil)
+    );
+  }
+  orderFilter()
+    ($scope.listProduct = []);
+  ($scope.currentPage = 1),
+    ($scope.pageSize = 12)
+
+
+
+
+
+  // get type from myservice
+
+  $scope.filter = $scope.typeProduct;
+  console.log($scope.filter)
+  $scope.getType = function (typeProduct) {
+    console.log(typeProduct);
+    $scope.type = typeProduct
+  }
+  $scope.orderfilEgg = function (egg) {
+    $scope.egg = egg
+  }
+>>>>>>> e52e5a5a3e712369c64e997a3c487dbbbfdc5e8c
 
   // save item data  myservice
   $scope.saveData = function (item) {
@@ -204,7 +297,6 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     btnUp.classList.remove("show-btn");
   };
   // zoom img product
-
   let magnifying_area = document.getElementById("magnifying_area");
   let magnifying_img = document.getElementById("magnifying_img");
   magnifying_area.addEventListener("mousemove", function (event) {
@@ -224,4 +316,74 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     magnifying_img.style.transform = "translate(-50%,-50%) scale(1)";
   });
 });
+<<<<<<< HEAD
 myApp.controller("aboutCtrl", function ($scope) {});
+=======
+
+
+// //about (bien cua danh)
+myApp.controller("aboutCtrl", function ($scope) {
+  // get by class tag
+  let btnDown1 = document.querySelector("#btn-down1");
+  let btnDown2 = document.querySelector("#btn-down2");
+  let btnDown3 = document.querySelector("#btn-down3");
+
+  let btnUp1 = document.querySelector("#btn-up1");
+  let btnUp2 = document.querySelector("#btn-up2");
+  let btnUp3 = document.querySelector("#btn-up3");
+
+  let showtask2 = document.querySelector("#task2");
+  let showtask3 = document.querySelector("#task3");
+  let showtask1 = document.querySelector("#task1");
+  // show hiden content  body Product
+  $scope.showContent1 = function () {
+    btnDown1.classList.add("hiden-btn");
+
+    btnUp1.classList.remove("hiden-btn");
+    showtask1.classList.add("show-btn");
+
+  };
+  $scope.hidenContent1 = function () {
+    btnDown1.classList.add("show-btn");
+    btnDown1.classList.remove("hiden-btn");
+
+    btnUp1.classList.add("hiden-btn");
+    btnUp1.classList.remove("show-btn");
+    showtask1.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent2 = function () {
+    btnDown2.classList.add("hiden-btn");
+
+    btnUp2.classList.remove("hiden-btn");
+    btnUp2.classList.add("show-btn");
+    showtask2.classList.add("show-btn");
+  };
+  $scope.hidenContent2 = function () {
+    btnDown2.classList.add("show-btn");
+    btnDown2.classList.remove("hiden-btn");
+
+    btnUp2.classList.add("hiden-btn");
+    btnUp2.classList.remove("show-btn");
+    showtask2.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent3 = function () {
+    btnDown3.classList.add("hiden-btn");
+
+    btnUp3.classList.remove("hiden-btn");
+    btnUp3.classList.add("show-btn");
+    showtask3.classList.add("show-btn");
+  };
+  $scope.hidenContent3 = function () {
+    btnDown3.classList.add("show-btn");
+    btnDown3.classList.remove("hiden-btn");
+
+    btnUp3.classList.add("hiden-btn");
+    btnUp3.classList.remove("show-btn");
+    showtask3.classList.remove("show-btn");
+  };
+});
+>>>>>>> e52e5a5a3e712369c64e997a3c487dbbbfdc5e8c
