@@ -31,10 +31,20 @@ myApp.config(function ($routeProvider) {
     });
 });
 myApp.run(function ($rootScope, $http) {
-  $http.get("./data/data.json").then(function (response) {
+  var vm = this;
+
+  $http({
+    method: 'GET',
+    url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
+  }).then(function successCallback(response) {
+    // Xử lý phản hồi thành công từ server
     $rootScope.data = response.data.details;
     console.log($rootScope.data);
+  }, function errorCallback(response) {
+    // Xử lý phản hồi thất bại từ server
+    console.log('Lỗi khi lấy dữ liệu:');
   });
+  
 });
 // factory
 myApp.factory("myService", function () {
@@ -47,6 +57,23 @@ myApp.factory("myService", function () {
   function get() {
     return savedData;
   }
+  myApp.config(['$provide', function($provide) {
+    $provide.decorator('$templateRequest', ['$delegate', function($delegate) {
+  
+      var fn = $delegate;
+  
+      $delegate = function(tpl) {
+  
+        for (var key in fn) {
+          $delegate[key] = fn[key];
+        }
+  
+        return fn.apply(this, [tpl, true]);
+      };
+  
+      return $delegate;
+    }]);
+  }]);
   // save type product
   function setTypeProduct(type) {
     saveType = type;
@@ -62,6 +89,19 @@ myApp.factory("myService", function () {
     getTypeproduct: getTypeproduct,
   };
 });
+// nav constroller
+myApp.controller("navCtrl",function($scope){
+  $scope.showNavbar = function(){
+    $(".nav").hide();
+    $(".nav-sidebar").show();
+
+  }
+  $scope.hidenNavbar = function(){
+    $(".nav").show();
+    $(".nav-sidebar").hide();
+
+  }
+})
 // home controller
 myApp.controller("homeCtrl", function ($scope, myService) {
   let fade = document.querySelectorAll(".fade");
@@ -90,16 +130,33 @@ myApp.controller("homeCtrl", function ($scope, myService) {
 });
 // shop controller
 myApp.controller("shopCtrl", function ($scope, $http, myService) {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c177fa9dc09596c35b5e5a5dd46095b06dea4ae2
   // get type from myservice
   $scope.typeProduct = myService.getTypeproduct();
-
+  $scope.filter = "";
   // get data from filr json
-  $http.get("./data/data.json").then(function (response) {
-    var filter = "";
+  $http({
+    method: 'GET',
+    url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
+  }).then(function successCallback(response) {
+    // Xử lý phản hồi thành công từ server
+     $scope.listProduct = response.data.details;
+  
+  }, function errorCallback(response) {
+    // Xử lý phản hồi thất bại từ server
+    console.log('Lỗi khi lấy dữ liệu:');
+  });
+  
+ 
+
+    
 
     // varible nagination page
+<<<<<<< HEAD
     ($scope.currentPage = 1), ($scope.numPerPage = 12), ($scope.maxSize = 5);
     var listItem = [];
 
@@ -122,64 +179,32 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
       );
     }
     orderFilter()
-    //
-    filter = $scope.typeProduct;
-    console.log(filter);
-    switch (filter) {
-      case "gallsery":
-        $scope.listProduct = listItem.filter((item) =>
-          item.type.includes(filter)
-        );
-        break;
-      case "Anniversary":
-        $scope.listProduct = listItem.filter((item) =>
-          item.type.includes(filter)
-        );
-        break;
-      case "Marriage":
-        $scope.listProduct = listItem.filter((item) =>
-          item.type.includes(filter)
-        );
-        break;
-      case "birthday":
-        $scope.listProduct = listItem.filter((item) =>
-          item.type.includes(filter)
-        );
-        break;
-      case true:
-        break;
+=======
+    ( $scope.listProduct = []);
+    ($scope.currentPage = 1),
+     ($scope.pageSize = 12)
 
-      default:
-        $scope.listProduct = listItem;
-        $scope.changePage = function (page) {
-          $scope.currentPage = page;
-        };
-        $scope.nextPage = function () {
-          if ($scope.currentPage >= 3) {
-            $scope.currentPage = 1;
-          } else {
-            $scope.currentPage++;
-          }
-        };
-        $scope.prewPage = function () {
-          console.log($scope.currentPage);
-          if ($scope.currentPage <= 1) {
-            $scope.currentPage = 3;
-          } else {
-            $scope.currentPage--;
-          }
-        };
-        $scope.numOfPages = function () {
-          return Math.ceil(itemsDetails.length / $scope.numPerPage);
-        };
-        $scope.$watch("currentPage + numPerPage", function () {
-          var begin = ($scope.currentPage - 1) * $scope.numPerPage,
-            end = begin + $scope.numPerPage;
-          $scope.listProduct = listItem.slice(begin, end);
-        });
-        break;
-    }
-  });
+   
+ 
+    
+ 
+    // get type from myservice
+
+    $scope.filter = $scope.typeProduct;
+console.log( $scope.filter)
+    $scope.getType = function(typeProduct){
+    console.log(typeProduct);
+      $scope.type = typeProduct
+   }
+   $scope.orderfilEgg = function(egg){
+    $scope.egg = egg
+   }
+
+>>>>>>> c177fa9dc09596c35b5e5a5dd46095b06dea4ae2
+    //
+
+
+  
 
   // save item data  myservice
   $scope.saveData = function (item) {
@@ -242,7 +267,10 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     btnUp.classList.remove("show-btn");
   };
   // zoom img product
+<<<<<<< HEAD
 
+=======
+>>>>>>> c177fa9dc09596c35b5e5a5dd46095b06dea4ae2
 
   let magnifying_area = document.getElementById("magnifying_area");
   let magnifying_img = document.getElementById("magnifying_img");
@@ -264,7 +292,6 @@ myApp.controller("detailCtrl", function ($scope, myService) {
   });
 });
 
-a
 
 // //about (bien cua danh)
 myApp.controller("aboutCtrl", function ($scope) {
@@ -335,3 +362,8 @@ myApp.controller("aboutCtrl", function ($scope) {
 
 
 
+=======
+myApp.controller("aboutCtrl",function($scope){
+
+})
+>>>>>>> c177fa9dc09596c35b5e5a5dd46095b06dea4ae2
