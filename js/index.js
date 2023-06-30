@@ -30,21 +30,11 @@ myApp.config(function ($routeProvider) {
       templateUrl: "./views/detail.html",
     });
 });
-myApp.run(function ($rootScope, $http) {
-  var vm = this;
 
-  $http({
-    method: 'GET',
-    url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
-  }).then(function successCallback(response) {
-    // Xử lý phản hồi thành công từ server
-    $rootScope.data = response.data.details;
-    console.log($rootScope.data);
-  }, function errorCallback(response) {
-    // Xử lý phản hồi thất bại từ server
-    console.log('Lỗi khi lấy dữ liệu:');
+myApp.run(function ($rootScope, $http) {
+  $http.get("./data/data.json").then(function (response) {
+    $rootScope.dataProduct = response.data.details;
   });
-  
 });
 // factory
 myApp.factory("myService", function () {
@@ -57,23 +47,27 @@ myApp.factory("myService", function () {
   function get() {
     return savedData;
   }
-  myApp.config(['$provide', function($provide) {
-    $provide.decorator('$templateRequest', ['$delegate', function($delegate) {
-  
-      var fn = $delegate;
-  
-      $delegate = function(tpl) {
-  
-        for (var key in fn) {
-          $delegate[key] = fn[key];
-        }
-  
-        return fn.apply(this, [tpl, true]);
-      };
-  
-      return $delegate;
-    }]);
-  }]);
+  myApp.config([
+    "$provide",
+    function ($provide) {
+      $provide.decorator("$templateRequest", [
+        "$delegate",
+        function ($delegate) {
+          var fn = $delegate;
+
+          $delegate = function (tpl) {
+            for (var key in fn) {
+              $delegate[key] = fn[key];
+            }
+
+            return fn.apply(this, [tpl, true]);
+          };
+
+          return $delegate;
+        },
+      ]);
+    },
+  ]);
   // save type product
   function setTypeProduct(type) {
     saveType = type;
@@ -90,18 +84,16 @@ myApp.factory("myService", function () {
   };
 });
 // nav constroller
-myApp.controller("navCtrl",function($scope){
-  $scope.showNavbar = function(){
+myApp.controller("navCtrl", function ($scope) {
+  $scope.showNavbar = function () {
     $(".nav").hide();
     $(".nav-sidebar").show();
-
-  }
-  $scope.hidenNavbar = function(){
+  };
+  $scope.hidenNavbar = function () {
     $(".nav").show();
     $(".nav-sidebar").hide();
-
-  }
-})
+  };
+});
 // home controller
 myApp.controller("homeCtrl", function ($scope, myService) {
   let fade = document.querySelectorAll(".fade");
@@ -132,49 +124,24 @@ myApp.controller("homeCtrl", function ($scope, myService) {
 myApp.controller("shopCtrl", function ($scope, $http, myService) {
   // get type from myservice
   $scope.typeProduct = myService.getTypeproduct();
-  $scope.filter = "";
-  // get data from filr json
-  $http({
-    method: 'GET',
-    url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
-  }).then(function successCallback(response) {
-    // Xử lý phản hồi thành công từ server
-     $scope.listProduct = response.data.details;
-  
-  }, function errorCallback(response) {
-    // Xử lý phản hồi thất bại từ server
-    console.log('Lỗi khi lấy dữ liệu:');
-  });
-  
- 
 
-    
+  // varible nagination page
+  $scope.listProduct = [];
+  ($scope.currentPage = 1), ($scope.pageSize = 12);
 
-    // varible nagination page
-    ( $scope.listProduct = []);
-    ($scope.currentPage = 1),
-     ($scope.pageSize = 12)
+  // get type from myservice
 
-   
- 
-    
- 
-    // get type from myservice
-
-    $scope.filter = $scope.typeProduct;
-console.log( $scope.filter)
-    $scope.getType = function(typeProduct){
+  $scope.filter = $scope.typeProduct;
+  console.log($scope.filter);
+  $scope.getType = function (typeProduct) {
     console.log(typeProduct);
-      $scope.type = typeProduct
-   }
-   $scope.orderfilEgg = function(egg){
-    $scope.egg = egg
-   }
+    $scope.type = typeProduct;
+  };
+  $scope.orderfilEgg = function (egg) {
+    $scope.egg = egg;
+  };
 
-    //
-
-
-  
+  //
 
   // save item data  myservice
   $scope.saveData = function (item) {
@@ -203,7 +170,7 @@ console.log( $scope.filter)
 });
 
 // contact controller
-myApp.controller("contactCtrl", function ($scope) { });
+myApp.controller("contactCtrl", function ($scope) {});
 // detail controller
 myApp.controller("detailCtrl", function ($scope, myService) {
   // get  data from myservice
@@ -211,7 +178,7 @@ myApp.controller("detailCtrl", function ($scope, myService) {
 
   $scope.data.image == null
     ? ($scope.data.image =
-      "../images/Cute_girl_bakery_logo_homemade_bakery_shop_hand_drawn_cartoon_art_illustration.jpg")
+        "../images/Cute_girl_bakery_logo_homemade_bakery_shop_hand_drawn_cartoon_art_illustration.jpg")
     : null;
 
   // get by class tag
@@ -257,6 +224,4 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     magnifying_img.style.transform = "translate(-50%,-50%) scale(1)";
   });
 });
-myApp.controller("aboutCtrl",function($scope){
-
-})
+myApp.controller("aboutCtrl", function ($scope) {});

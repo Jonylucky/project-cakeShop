@@ -7,7 +7,7 @@
       "egg": "no",
       "price": "19",
       "quantily": "8",
-      "image": "./images/img-birthday/birthday-1.jpg",
+      "image": "images/img-birthday/birthday-1.jpg",
       "descript": {
         "describe": "A Family Recipe That Has Been Improved And Perfected Over Many Years, Every Chocolate Cake Is Lovingly Handcrafted By Mommy Lucy. Homemade Since 1975. The Best-Selling Chocolate Cake In A Can!",
         "ingredientts": "Butter, Sugar, Flour, Chocolate",
@@ -23,7 +23,7 @@
       "egg": "no",
       "price": "19",
       "quantily": "8",
-      "image": "./images/img-birthday/birthday-2.jpg",
+      "image": "images/img-birthday/birthday-2.jpg",
       "descript": {
         "describe": "A Family Recipe That Has Been Improved And Perfected Over Many Years, Every Chocolate Cake Is Lovingly Handcrafted By Mommy Lucy. Homemade Since 1975. The Best-Selling Chocolate Cake In A Can!",
         "ingredientts": "Butter, Sugar, Flour, Chocolate",
@@ -39,7 +39,7 @@
       "egg": "no",
       "price": "19",
       "quantily": "8",
-      "image": "./images/img-birthday/birthday-3.jpg",
+      "image": "images/img-birthday/birthday-3.jpg",
       "descript": {
         "describe": "A Family Recipe That Has Been Improved And Perfected Over Many Years, Every Chocolate Cake Is Lovingly Handcrafted By Mommy Lucy. Homemade Since 1975. The Best-Selling Chocolate Cake In A Can!",
         "ingredientts": "Butter, Sugar, Flour, Chocolate",
