@@ -260,3 +260,69 @@ myApp.controller("detailCtrl", function ($scope, myService) {
 myApp.controller("aboutCtrl",function($scope){
 
 })
+
+// //about (bien cua danh)
+myApp.controller("aboutCtrl", function ($scope) {
+  // get by class tag
+  let btnDown1 = document.querySelector("#btn-down1");
+  let btnDown2 = document.querySelector("#btn-down2");
+  let btnDown3 = document.querySelector("#btn-down3");
+
+  let btnUp1 = document.querySelector("#btn-up1");
+  let btnUp2 = document.querySelector("#btn-up2");
+  let btnUp3 = document.querySelector("#btn-up3");
+
+  let showtask2 = document.querySelector("#task2");
+  let showtask3 = document.querySelector("#task3");
+  let showtask1 = document.querySelector("#task1");
+  // show hiden content  body Product
+  $scope.showContent1 = function () {
+    btnDown1.classList.add("hiden-btn");
+
+    btnUp1.classList.remove("hiden-btn");
+    showtask1.classList.add("show-btn");
+
+  };
+  $scope.hidenContent1 = function () {
+    btnDown1.classList.add("show-btn");
+    btnDown1.classList.remove("hiden-btn");
+
+    btnUp1.classList.add("hiden-btn");
+    btnUp1.classList.remove("show-btn");
+    showtask1.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent2 = function () {
+    btnDown2.classList.add("hiden-btn");
+
+    btnUp2.classList.remove("hiden-btn");
+    btnUp2.classList.add("show-btn");
+    showtask2.classList.add("show-btn");
+  };
+  $scope.hidenContent2 = function () {
+    btnDown2.classList.add("show-btn");
+    btnDown2.classList.remove("hiden-btn");
+
+    btnUp2.classList.add("hiden-btn");
+    btnUp2.classList.remove("show-btn");
+    showtask2.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent3 = function () {
+    btnDown3.classList.add("hiden-btn");
+
+    btnUp3.classList.remove("hiden-btn");
+    btnUp3.classList.add("show-btn");
+    showtask3.classList.add("show-btn");
+  };
+  $scope.hidenContent3 = function () {
+    btnDown3.classList.add("show-btn");
+    btnDown3.classList.remove("hiden-btn");
+
+    btnUp3.classList.add("hiden-btn");
+    btnUp3.classList.remove("show-btn");
+    showtask3.classList.remove("show-btn");
+  };
+});
