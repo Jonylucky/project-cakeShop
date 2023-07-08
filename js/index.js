@@ -326,3 +326,4 @@ myApp.controller("aboutCtrl", function ($scope) {
     showtask3.classList.remove("show-btn");
   };
 });
+;
