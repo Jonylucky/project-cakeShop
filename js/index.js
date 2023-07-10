@@ -23,6 +23,9 @@ myApp.config(function ($routeProvider) {
     .when("/contact", {
       templateUrl: "./views/contact.html",
     })
+    .when("/blog", {
+      templateUrl: "./views/blog.html",
+    })
     .when("/about", {
       templateUrl: "./views/about.html",
     })
@@ -44,7 +47,7 @@ myApp.run(function ($rootScope, $http) {
     // Xử lý phản hồi thất bại từ server
     console.log('Lỗi khi lấy dữ liệu:');
   });
-  
+
 });
 // factory
 myApp.factory("myService", function () {
@@ -57,20 +60,20 @@ myApp.factory("myService", function () {
   function get() {
     return savedData;
   }
-  myApp.config(['$provide', function($provide) {
-    $provide.decorator('$templateRequest', ['$delegate', function($delegate) {
-  
+  myApp.config(['$provide', function ($provide) {
+    $provide.decorator('$templateRequest', ['$delegate', function ($delegate) {
+
       var fn = $delegate;
-  
-      $delegate = function(tpl) {
-  
+
+      $delegate = function (tpl) {
+
         for (var key in fn) {
           $delegate[key] = fn[key];
         }
-  
+
         return fn.apply(this, [tpl, true]);
       };
-  
+
       return $delegate;
     }]);
   }]);
@@ -90,13 +93,13 @@ myApp.factory("myService", function () {
   };
 });
 // nav constroller
-myApp.controller("navCtrl",function($scope){
-  $scope.showNavbar = function(){
+myApp.controller("navCtrl", function ($scope) {
+  $scope.showNavbar = function () {
     $(".nav").hide();
     $(".nav-sidebar").show();
 
   }
-  $scope.hidenNavbar = function(){
+  $scope.hidenNavbar = function () {
     $(".nav").show();
     $(".nav-sidebar").hide();
 
@@ -139,42 +142,42 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
     url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
   }).then(function successCallback(response) {
     // Xử lý phản hồi thành công từ server
-     $scope.listProduct = response.data.details;
-  
+    $scope.listProduct = response.data.details;
+
   }, function errorCallback(response) {
     // Xử lý phản hồi thất bại từ server
     console.log('Lỗi khi lấy dữ liệu:');
   });
-  
- 
 
-    
 
-    // varible nagination page
-    ( $scope.listProduct = []);
-    ($scope.currentPage = 1),
-     ($scope.pageSize = 12)
 
-   
- 
-    
- 
-    // get type from myservice
 
-    $scope.filter = $scope.typeProduct;
-console.log( $scope.filter)
-    $scope.getType = function(typeProduct){
+
+  // varible nagination page
+  ($scope.listProduct = []);
+  ($scope.currentPage = 1),
+    ($scope.pageSize = 12)
+
+
+
+
+
+  // get type from myservice
+
+  $scope.filter = $scope.typeProduct;
+  console.log($scope.filter)
+  $scope.getType = function (typeProduct) {
     console.log(typeProduct);
-      $scope.type = typeProduct
-   }
-   $scope.orderfilEgg = function(egg){
+    $scope.type = typeProduct
+  }
+  $scope.orderfilEgg = function (egg) {
     $scope.egg = egg
-   }
+  }
 
-    //
+  //
 
 
-  
+
 
   // save item data  myservice
   $scope.saveData = function (item) {
@@ -257,7 +260,7 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     magnifying_img.style.transform = "translate(-50%,-50%) scale(1)";
   });
 });
-myApp.controller("aboutCtrl",function($scope){
+myApp.controller("aboutCtrl", function ($scope) {
 
 })
 
@@ -327,3 +330,14 @@ myApp.controller("aboutCtrl", function ($scope) {
   };
 });
 ;
+myApp.controller("blogCtrl", function ($scope) {
+  var blogShow = document.querySelectorAll(".blog-readmore");
+  function handleShow(index) {
+    if (blogShow[index].style.display === "block") {
+      blogShow[index].style.display = "none"
+    } 
+    else {
+      blogShow[index].style.display = "block"
+    }
+  }
+});
