@@ -36,10 +36,12 @@
   color: #fff;
   padding: 8px 16px;
   text-decoration: none;
+  border-radius: 10px;
 }
 .nav-link:hover {
-  background-color: #b43f11;
+  background-color: white;
   color: #222;
+  border-radius: 10px;
 }
 .nav-btn{
   margin: 6px;
@@ -67,6 +69,7 @@
   padding: 8px 16px;
   text-decoration: none;
 }
+
 /* <=====conten========> */
 
 /* carousel */
@@ -185,7 +188,7 @@
   object-fit: cover;
 }
 .banner:hover .banner-img {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 .banner-content {
   padding: 0 16px;
@@ -206,13 +209,13 @@
   background: url("../images/heading-bg.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-
   width: 100%;
   text-align: center;
   padding-top: 12rem;
   padding-bottom: 8rem;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.7);
 }
+
 .bd-ourShop__head {
   color: #fff;
   font-size: 4rem;
@@ -1007,4 +1010,12 @@ margin-top: 32px;
 .footer .box-container .box .payments {
   width: 100%;
   margin-top: 2rem;
+}
+
+.showcontent:hover ~ .hidecontent{
+  visibility: visible;
+}
+
+.hidecontent{
+  visibility: hidden;
 }

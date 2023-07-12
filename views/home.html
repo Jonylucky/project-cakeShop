@@ -1,11 +1,7 @@
 <div ng-controller="homeCtrl">
     <!-- body -->
     <!-- carousel -->
-
-
-
     <div class="carousel">
-
         <div class="container">
             <div class="slides-container">
                 <div class="fade show">
@@ -13,7 +9,7 @@
                         <div class="content">
                             <span>Have a Cake-A-Licious</span>
                             <h3>up to 50% off</h3>
-                            <a href="#" class="btn">Shop Now</a>
+                            <a href="#!shop" class="btn">Shop Now</a>
                         </div>
                         <div class="img">
                             <img decoding="async" src="./images/home-img-1.png" alt="">
@@ -67,7 +63,7 @@
     <div class="container">
         <div class="container-banner">
             <div class="wd-thir s-col-full m-haft">
-                <div class="banner ">
+                <div class="banner">
                     <img class="banner-img" src="./images/banner-1.jpg" alt="">
                     <div class="banner-content">
                         <span>limited sales</span>
@@ -78,7 +74,7 @@
             </div>
             <div class="wd-thir s-col-full m-haft">
 
-                <div class="banner ">
+                <div class="banner">
                     <img class="banner-img" src="./images/banner-1.jpg" alt="">
                     <div class="banner-content">
                         <span>limited sales</span>
@@ -88,7 +84,7 @@
                 </div>
             </div>
             <div class="wd-thir s-col-full m-haft">
-                <div class="banner ">
+                <div class="banner">
                     <img class="banner-img" src="./images/banner-1.jpg" alt="">
                     <div class="banner-content">
                         <span>limited sales</span>
@@ -99,10 +95,10 @@
             </div>
         </div>
     </div>
+
     <!-- our Shop -->
-    <div class="head-bg">
-        <h2 class="bd-ourShop__head
-    ">Our Shop</h2>
+    <div class="head-bg ">
+        <h2 class="bd-ourShop__head">Our Shop</h2>
     </div>
     <!-- our category  -->
     <div class="container">
@@ -112,25 +108,25 @@
                 <a class="view-all" ng-click="saveType()">View All >></a>
             </div>
             <div class="category-content">
-                <div class="box-category wd-five col-thir s-col-full">
-                    <img src="./images/cat-1.jpg" alt="">
-                    <h3>Fresh Cupcake</h3>
+                <div class="box-category wd-five col-thir s-col-full banner-img">
+                    <img class="showcontent" src="./images/cat-1.jpg">
+                    <h3 class="hidecontent" >Fresh Cupcake</h3>
                 </div>
                 <div class="box-category wd-five col-thir s-col-full">
-                    <img src="./images/cat-2.jpg" alt="">
-                    <h3>Fresh Cupcake</h3>
+                    <img class="showcontent" src="./images/cat-2.jpg" alt="">
+                    <h3 class="hidecontent">Fresh Cupcake</h3>
                 </div>
                 <div class="box-category wd-five col-thir s-col-full">
-                    <img src="./images/cat-3.jpg" alt="">
-                    <h3>Fresh Cupcake</h3>
+                    <img class="showcontent" src="./images/cat-3.jpg" alt="">
+                    <h3 class="hidecontent">Fresh Cupcake</h3>
                 </div>
                 <div class="box-category wd-five col-thir s-col-full">
-                    <img src="./images/cat-4.jpg" alt="">
-                    <h3>Fresh Cupcake</h3>
+                    <img class="showcontent" src="./images/cat-4.jpg" alt="">
+                    <h3 class="hidecontent">Fresh Cupcake</h3>
                 </div>
                 <div class="box-category wd-five col-thir s-col-full">
-                    <img src="./images/cat-5.jpg" alt="">
-                    <h3 class="box-head">Fresh Cupcake</h3>
+                    <img class="showcontent" src="./images/cat-5.jpg" alt="">
+                    <h3 class="hidecontent">Fresh Cupcake</h3>
                 </div>
             </div>
         </div>
@@ -182,16 +178,14 @@
     </div>
     <!-- About us -->
     <div class="head-bg">
-        <h2 class="bd-ourShop__head
-    ">About Us</h2>
+        <h2 class="bd-ourShop__head">About Us</h2>
     </div>
     <div class="container">
         <div class="about">
-
             <div class="about-img wd-haft s-col-full">
                 <img src="./images/about-img.jpg" alt="">
             </div>
-            <div class="about-conten wd-haft s-col-full">
+            <div class="about-conten wd-haft s-col-full ">
                 <span>welcome to our products</span>
                 <h3>Cake-A-Licious products</h3>
                 <p class="text-about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -204,7 +198,7 @@
                 <p class="text-about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                     tempor
                     farhan aliqua. Ut enim ad minim veniam, quis</p>
-                <a href="#" class="btn">read more</a>
+                <a href="#!about" class="btn">read more</a>
             </div>
         </div>
     </div>
@@ -334,8 +328,7 @@
     </div>
     <!-- our blogs -->
     <div class="head-bg">
-        <h2 class="bd-ourShop__head
-    ">Our blogs</h2>
+        <h2 class="bd-ourShop__head">Our blogs</h2>
     </div>
     <div class="container">
         <div class="container-blogs">
@@ -346,7 +339,7 @@
             <div class="container-box-blogs">
                 <div class="wd-thir  s-col-full mg-small">
 
-                    <div class="box-blog">
+                    <div class="box-blog blog-color">
                         <div class="box-header">
                             <img class="box-header__img" decoding="async" src="./images/blog-1.jpg" alt="">
                         </div>
@@ -357,13 +350,13 @@
                             </div>
                             <h3>blogs title page</h3>
                             <p>Lorem ipsum dolor sit amet, farhan aliqua. Ut enim ad minim veniam, quis</p>
-                            <a href="../views/blog.html" class="btn">read more...</a>
+                            <a href="#!blog" class="btn">read more...</a>
                         </div>
                     </div>
                 </div>
                 <div class="wd-thir s-col-full  mg-small">
 
-                    <div class="box-blog ">
+                    <div class="box-blog blog-color">
                         <div class="box-header">
                             <img class="box-header__img" decoding="async" src="./images/blog-2.jpg" alt="">
                         </div>
@@ -374,13 +367,13 @@
                             </div>
                             <h3>blogs title page</h3>
                             <p>Lorem ipsum dolor sit amet, farhan aliqua. Ut enim ad minim veniam, quis</p>
-                            <a href="../views/blog.html" class="btn">read more...</a>
+                            <a href="#!blog" class="btn">read more...</a>
                         </div>
                     </div>
                 </div>
                 <div class="wd-thir s-col-full mg-small">
 
-                    <div class="box-blog">
+                    <div class="box-blog blog-color">
                         <div class="box-header">
                             <img class="box-header__img" decoding="async" src="./images/blog-3.jpg" alt="">
                         </div>
@@ -391,7 +384,7 @@
                             </div>
                             <h3>blogs title page</h3>
                             <p>Lorem ipsum dolor sit amet, farhan aliqua. Ut enim ad minim veniam, quis</p>
-                            <a href="../views/blog.html" class="btn">read more...</a>
+                            <a href="#!blog" class="btn">read more...</a>
                         </div>
                     </div>
                 </div>
@@ -401,13 +394,12 @@
     </div>
     <!-- contact  -->
     <div class="head-bg">
-        <h2 class="bd-ourShop__head
-    ">Contact</h2>
+        <h2 class="bd-ourShop__head">Contact</h2>
     </div>
     <div class="container">
         <div class="container-box__address">
             <div class="wd-thir s-col-full mg-small">
-                <div class="box-address ">
+                <div class="box-address blog-color">
                     <ol class="box-address-list">
                         <li class="box-address__item"><a href="" class="box-address-link"><i
                                     class="fa-solid fa-phone"></i></a></li>
@@ -421,7 +413,7 @@
                 </div>
             </div>
             <div class="wd-thir s-col-full mg-small">
-                <div class="box-address ">
+                <div class="box-address blog-color">
                     <ol class="box-address-list">
                         <li class="box-address__item"><a href="" class="box-address-link"><i
                                     class="fa-solid fa-envelope"></i></a></li>
@@ -437,7 +429,7 @@
                 </div>
             </div>
             <div class="wd-thir s-col-full mg-small">
-                <div class="box-address">
+                <div class="box-address blog-color">
                     <ol class="box-address-list">
                         <li class="box-address__item"><a href="" class="box-address-link"><i
                                     class="fa-sharp fa-solid fa-location-dot"></i></a></li>
