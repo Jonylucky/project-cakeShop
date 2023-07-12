@@ -6,7 +6,7 @@
 
                 <div class="container-blog">
 
-                    <div class="blog-img blog-color" >
+                    <div class="blog-img ">
                         <div class="image">
                             <img src="../images/blog-1.jpg" alt="">
                         </div>
@@ -14,7 +14,7 @@
                             <div class="read-more-container"></div>
                             <span class="blog-detail-span">Blog-DailyBeat</span>
                             <h2 class="blog-detail-h2">10 ICE CREAM INSPIRED CAKES</h2>
-                            <p style="color: black;">
+                            <p class="blog-p" style="color: black;">
                                 <span style="padding-left: 25px;">Today</span> is National Ice Cream Day! If there’s one
                                 thing we
                                 love as much as cake around here, it’s ice
@@ -28,25 +28,25 @@
                                 cake!
                                 Here’s 10 Ice Cream Inspired Cakes!
                             </p>
-                            <p class="blog-readmore" style="color: black;">
-                                1. Ice Cream Cake. <br>
-                                2. Banana Split Cake. <br>
-                                3. Mint Cookies N Cream Cake. <br>
-                                4. Neapolitan Cake. <br>
-                                5. Rocky Road Cake. <br>
-                                6. Ultimate Sundae Cake. <br>
-                                7. Strawberry Crunch Cake. <br>
-                                8. Mint Chocolate Chip Cake. <br>
-                                9. Butter Pecan Cake. <br>
-                                10. Orange Creamsicle Cake. <br>
-                            </p>
-                            <label class="btn" for="check" onclick="handleShow(0)" style="right: 10%;" >Read More</label>
+                            <ul class="blog-readmore">
+                                <li class="item__content">- Ice Cream Cake. </li>
+                                <li class="item__content">- Banana Split Cake.</li>
+                                <li class="item__content">- Mint Cookies N Cream Cake. </li>
+                                <li class="item__content">- Neapolitan Cake. </li>
+                                <li class="item__content">- Rocky Road Cake. </li>
+                                <li class="item__content">- Ultimate Sundae Cake.</li>
+                                <li class="item__content">- Strawberry Crunch Cake.</li>
+                                <li class="item__content">- Mint Chocolate Chip Cake.</li>
+                                <li class="item__content">- Butter Pecan Cake.</li>
+                                <li class="item__content">- Orange Creamsicle Cake.</li>
+                            </ul>
+                            <label class="btn" for="check" onclick="handleShow(0)" style="right: 10%;">Read More</label>
                         </div>
                     </div>
 
                     <hr>
 
-                    <div class="blog-img blog-color">
+                    <div class="blog-img">
                         <div class="image">
                             <img src="../images/Anniversary-img/product-8.jpg" alt="">
                         </div>
@@ -84,7 +84,7 @@
 
                     <hr>
 
-                    <div class="blog-img blog-color">
+                    <div class="blog-img ">
                         <div class="image">
                             <img src="../images/gallery/gallery-img-3.jpg" alt="">
                         </div>
@@ -114,14 +114,14 @@
                                 local gourmet
                                 shop – but good old-fashioned chocolate sprinkles will work too!
                             </p>
-                            <label class="btn" for="check" onclick="handleShow(2)" >Read More</label>
+                            <label class="btn" for="check" onclick="handleShow(2)">Read More</label>
 
                         </div>
                     </div>
 
                     <hr>
 
-                    <div class="blog-img blog-color">
+                    <div class="blog-img">
                         <div class="image">
                             <img src="../images/rainbowcake.jpg" class="a" alt="">
                         </div>
@@ -158,7 +158,7 @@
                                 pieces into place!
 
                             </p>
-                            <label class="btn" for="check" onclick="handleShow(3)">Read More</label>
+                            <label  class="btn" for="check" onclick="handleShow(3)">Read More</label>
                         </div>
                     </div>
                 </div>
@@ -166,4 +166,15 @@
         </div>
     </div>
 
-</html>
+    <script>
+        var blogShow = document.querySelectorAll(".blog-readmore");
+        function handleShow(index) {
+            if (blogShow[index].style.display === "block") {
+                blogShow[index].style.display = "none"
+            } else {
+                blogShow[index].style.display = "block"
+            }
+        }
+    </script>
+
+    </html>
