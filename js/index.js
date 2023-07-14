@@ -23,6 +23,9 @@ myApp.config(function ($routeProvider) {
     .when("/contact", {
       templateUrl: "./views/contact.html",
     })
+    .when("/blog", {
+      templateUrl: "./views/blog.html",
+    })
     .when("/about", {
       templateUrl: "./views/about.html",
     })
@@ -31,10 +34,20 @@ myApp.config(function ($routeProvider) {
     });
 });
 myApp.run(function ($rootScope, $http) {
-  $http.get("./data/data.json").then(function (response) {
+  var vm = this;
+
+  $http({
+    method: 'GET',
+    url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
+  }).then(function successCallback(response) {
+    // Xử lý phản hồi thành công từ server
     $rootScope.data = response.data.details;
     console.log($rootScope.data);
+  }, function errorCallback(response) {
+    // Xử lý phản hồi thất bại từ server
+    console.log('Lỗi khi lấy dữ liệu:');
   });
+
 });
 // factory
 myApp.factory("myService", function () {
@@ -47,6 +60,23 @@ myApp.factory("myService", function () {
   function get() {
     return savedData;
   }
+  myApp.config(['$provide', function ($provide) {
+    $provide.decorator('$templateRequest', ['$delegate', function ($delegate) {
+
+      var fn = $delegate;
+
+      $delegate = function (tpl) {
+
+        for (var key in fn) {
+          $delegate[key] = fn[key];
+        }
+
+        return fn.apply(this, [tpl, true]);
+      };
+
+      return $delegate;
+    }]);
+  }]);
   // save type product
   function setTypeProduct(type) {
     saveType = type;
@@ -62,6 +92,19 @@ myApp.factory("myService", function () {
     getTypeproduct: getTypeproduct,
   };
 });
+// nav constroller
+myApp.controller("navCtrl", function ($scope) {
+  $scope.showNavbar = function () {
+    $(".nav").hide();
+    $(".nav-sidebar").show();
+
+  }
+  $scope.hidenNavbar = function () {
+    $(".nav").show();
+    $(".nav-sidebar").hide();
+
+  }
+})
 // home controller
 myApp.controller("homeCtrl", function ($scope, myService) {
   let fade = document.querySelectorAll(".fade");
@@ -90,106 +133,51 @@ myApp.controller("homeCtrl", function ($scope, myService) {
 });
 // shop controller
 myApp.controller("shopCtrl", function ($scope, $http, myService) {
-  
-
   // get type from myservice
   $scope.typeProduct = myService.getTypeproduct();
-
+  $scope.filter = "";
   // get data from filr json
-  $http.get("./data/data.json").then(function (response) {
-    var filter = false;
- // funsction orderUserFill
- 
-    // varible nagination page
-    ($scope.currentPage = 1), ($scope.numPerPage = 12), ($scope.maxSize = 5);
-    var listItem = [];
-    listItem = response.data.details;
-    console.log(listItem);
-    // get type from myservice
-   
-    function orderFilter(orderfil) {
-      console.log(orderfil)
-        switch (orderfil) {
-          case "with":
-            
-            break;
-        
-          default:
-            break;
-        }
-          $scope.listProduct = listItem.filter((item) =>
-            item.type.includes(orderfil)
-           
-          );
-         
-        }
-        var name = angular.element($(".product-item__type"));
-        name.on("click", function (event) {
-          console.log(event.target)
-          let orderFill = event.target.getAttribute("data-set");
-          orderFilter(orderFill);
-        
-        });
-   
+  $http({
+    method: 'GET',
+    url: 'http://127.0.0.1:5500/project-cakeShop/data/data.json'
+  }).then(function successCallback(response) {
+    // Xử lý phản hồi thành công từ server
+    $scope.listProduct = response.data.details;
 
-    //
-    filter = $scope.typeProduct == ""?false:$scope.typeProduct;
-    console.log(filter);
-    switch (filter) {
-      case "gallsery":
-        orderFilter(filter);
-        break;
-      case "Anniversary":
-        $scope.listProduct = listItem.filter((item) =>
-          item.type.includes(filter)
-        );
-        break;
-      case "Marriage":
-        $scope.listProduct = listItem.filter((item) =>
-          item.type.includes(filter)
-        );
-        break;
-      case "birthday":
-        $scope.listProduct = listItem.filter((item) =>
-          item.type.includes(filter)
-        );
-        break;
-        case false:
-          $scope.listProduct = listItem;
-          $scope.changePage = function (page) {
-            $scope.currentPage = page;
-          };
-          $scope.nextPage = function () {
-            if ($scope.currentPage >= 3) {
-              $scope.currentPage = 1;
-            } else {
-              $scope.currentPage++;
-            }
-          };
-          $scope.prewPage = function () {
-            console.log($scope.currentPage);
-            if ($scope.currentPage <= 1) {
-              $scope.currentPage = 3;
-            } else {
-              $scope.currentPage--;
-            }
-          };
-          $scope.numOfPages = function () {
-            return Math.ceil(itemsDetails.length / $scope.numPerPage);
-          };
-          $scope.$watch("currentPage + numPerPage", function () {
-            var begin = ($scope.currentPage - 1) * $scope.numPerPage,
-              end = begin + $scope.numPerPage;
-            $scope.listProduct = listItem.slice(begin, end);
-          });
-          break
-      
-      default:
-
-        
-        break;
-      }
+  }, function errorCallback(response) {
+    // Xử lý phản hồi thất bại từ server
+    console.log('Lỗi khi lấy dữ liệu:');
   });
+
+
+
+
+
+  // varible nagination page
+  ($scope.listProduct = []);
+  ($scope.currentPage = 1),
+    ($scope.pageSize = 12)
+
+
+
+
+
+  // get type from myservice
+
+  $scope.filter = $scope.typeProduct;
+  console.log($scope.filter)
+  $scope.getType = function (typeProduct) {
+    console.log(typeProduct);
+    $scope.type = typeProduct
+  }
+  $scope.orderfilEgg = function (egg) {
+    $scope.egg = egg
+  }
+
+  //
+
+
+
 
   // save item data  myservice
   $scope.saveData = function (item) {
@@ -218,7 +206,7 @@ myApp.controller("shopCtrl", function ($scope, $http, myService) {
 });
 
 // contact controller
-myApp.controller("contactCtrl", function ($scope) {});
+myApp.controller("contactCtrl", function ($scope) { });
 // detail controller
 myApp.controller("detailCtrl", function ($scope, myService) {
   // get  data from myservice
@@ -226,7 +214,7 @@ myApp.controller("detailCtrl", function ($scope, myService) {
 
   $scope.data.image == null
     ? ($scope.data.image =
-        "../images/Cute_girl_bakery_logo_homemade_bakery_shop_hand_drawn_cartoon_art_illustration.jpg")
+      "../images/Cute_girl_bakery_logo_homemade_bakery_shop_hand_drawn_cartoon_art_illustration.jpg")
     : null;
 
   // get by class tag
@@ -252,7 +240,6 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     btnUp.classList.remove("show-btn");
   };
   // zoom img product
-  
 
   let magnifying_area = document.getElementById("magnifying_area");
   let magnifying_img = document.getElementById("magnifying_img");
@@ -273,3 +260,88 @@ myApp.controller("detailCtrl", function ($scope, myService) {
     magnifying_img.style.transform = "translate(-50%,-50%) scale(1)";
   });
 });
+myApp.controller("aboutCtrl", function ($scope) {
+
+})
+
+// //about (bien cua danh)
+myApp.controller("aboutCtrl", function ($scope) {
+  // get by class tag
+  let btnDown1 = document.querySelector("#btn-down1");
+  let btnDown2 = document.querySelector("#btn-down2");
+  let btnDown3 = document.querySelector("#btn-down3");
+
+  let btnUp1 = document.querySelector("#btn-up1");
+  let btnUp2 = document.querySelector("#btn-up2");
+  let btnUp3 = document.querySelector("#btn-up3");
+
+  let showtask2 = document.querySelector("#task2");
+  let showtask3 = document.querySelector("#task3");
+  let showtask1 = document.querySelector("#task1");
+  // show hiden content  body Product
+  $scope.showContent1 = function () {
+    btnDown1.classList.add("hiden-btn");
+
+    btnUp1.classList.remove("hiden-btn");
+    showtask1.classList.add("show-btn");
+
+  };
+  $scope.hidenContent1 = function () {
+    btnDown1.classList.add("show-btn");
+    btnDown1.classList.remove("hiden-btn");
+
+    btnUp1.classList.add("hiden-btn");
+    btnUp1.classList.remove("show-btn");
+    showtask1.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent2 = function () {
+    btnDown2.classList.add("hiden-btn");
+
+    btnUp2.classList.remove("hiden-btn");
+    btnUp2.classList.add("show-btn");
+    showtask2.classList.add("show-btn");
+  };
+  $scope.hidenContent2 = function () {
+    btnDown2.classList.add("show-btn");
+    btnDown2.classList.remove("hiden-btn");
+
+    btnUp2.classList.add("hiden-btn");
+    btnUp2.classList.remove("show-btn");
+    showtask2.classList.remove("show-btn");
+  };
+
+
+  $scope.showContent3 = function () {
+    btnDown3.classList.add("hiden-btn");
+
+    btnUp3.classList.remove("hiden-btn");
+    btnUp3.classList.add("show-btn");
+    showtask3.classList.add("show-btn");
+  };
+  $scope.hidenContent3 = function () {
+    btnDown3.classList.add("show-btn");
+    btnDown3.classList.remove("hiden-btn");
+
+    btnUp3.classList.add("hiden-btn");
+    btnUp3.classList.remove("show-btn");
+    showtask3.classList.remove("show-btn");
+  };
+});
+
+;
+
+//scroll to top
+const button = document.querySelector('button')
+const div = document.querySelector('div')
+button.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+})
+
+button.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: `smooth`
+  })
+})
