@@ -329,15 +329,19 @@ myApp.controller("aboutCtrl", function ($scope) {
     showtask3.classList.remove("show-btn");
   };
 });
+
 ;
-myApp.controller("blogCtrl", function ($scope) {
-  var blogShow = document.querySelectorAll(".blog-readmore");
-  function handleShow(index) {
-    if (blogShow[index].style.display === "block") {
-      blogShow[index].style.display = "none"
-    } 
-    else {
-      blogShow[index].style.display = "block"
-    }
-  }
-});
+
+//scroll to top
+const button = document.querySelector('button')
+const div = document.querySelector('div')
+button.addEventListener('click', () => {
+  window.scrollTo(0, 0);
+})
+
+button.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: `smooth`
+  })
+})
